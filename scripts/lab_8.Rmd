@@ -1,46 +1,41 @@
 ---
-title             : "The title"
-shorttitle        : "Title"
+title             : "Lab 8"
+shorttitle        : "The papaja file for lab 8"
 
 author: 
-  - name          : "First Author"
+  - name          : "Lisa Strycker"
     affiliation   : "1"
     corresponding : yes    # Define only one corresponding author
-    address       : "Postal address"
-    email         : "my@email.com"
-  - name          : "Ernst-August Doelle"
+    address       : "Eugene, OR"
+    email         : "lisas@ori.org"
+  - name          : "Lisa Strycker"
     affiliation   : "1,2"
 
 affiliation:
   - id            : "1"
-    institution   : "Wilhelm-Wundt-University"
+    institution   : "Oregon Research Institute"
   - id            : "2"
-    institution   : "Konstanz Business School"
-
-authornote: |
-  Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
-
-  Enter author note here.
+    institution   : "University of Oregon"
 
 abstract: |
-  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
+  ANimal species have different behaviors for avoiding predators. Tonic immobility of a form of passive anti-predator behavior.
   
-  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
+  In tonic immobility, organisms do not respond to external stimulation.
   
-  One sentence clearly stating the **general problem** being addressed by  this particular study.
+  Tonic immobility has been shown in isopods, including "sow bugs," but is largely unstudied. This study answered four research questions: (a) Do species differ in responsiveness to tonic immobility-inducing stimuli? (b) Does the responsiveness depend upon sex, size, or stimulus? (c) Is the duration of tonic immobility influenced by sex, size, or type of stimulus, and does it differ between species? (d) Is the duration of tonic immobility related to the time needed to elicit a response?
   
-  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
+  Here we show that responses to external stimuli differ within and between three species of isopods. Three distinct patterns were found.
   
-  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
+  Relatively stronger responses to different stimuli (e.g., drop, touch) may be because some species tend to have visual predators that are larger or smaller than they are. 
   
-  One or two sentences to put the results into a more **general context**.
+  More studies are needed to investigative whether anti-predator strategies like tonic immobility improve survivorship.
   
-  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
+  Future research should elucidate which responses work for different predators.
   
   <!-- https://tinyurl.com/ybremelq -->
   
-keywords          : "keywords"
-wordcount         : "X"
+keywords          : "tonic immobility"
+wordcount         : no
 
 bibliography      : ["r-references.bib"]
 
@@ -48,7 +43,7 @@ floatsintext      : no
 figurelist        : no
 tablelist         : no
 footnotelist      : no
-linenumbers       : yes
+linenumbers       : no
 mask              : no
 draft             : no
 
