@@ -1,22 +1,24 @@
 ---
 title             : "Lab 8"
-shorttitle        : "The papaja file for lab 8"
+shorttitle        : "Papaja file for lab 8"
 
 author: 
   - name          : "Lisa Strycker"
-    affiliation   : "1"
+    affiliation   : "1,2"
     corresponding : yes    # Define only one corresponding author
     address       : "Eugene, OR"
     email         : "lisas@ori.org"
-  - name          : "Lisa Strycker"
-    affiliation   : "1,2"
+  - name          : "Noah Strycker"
+    affiliation   : "3"
 
 affiliation:
   - id            : "1"
     institution   : "Oregon Research Institute"
   - id            : "2"
     institution   : "University of Oregon"
-
+  - id            : "3"
+    institution   : "Stony Brook University"
+    
 abstract: |
   Animal species have different behaviors for avoiding predators. Tonic immobility of a form of passive anti-predator behavior.
   
@@ -54,8 +56,11 @@ output            : papaja::apa6_pdf
 ```{r setup, include = FALSE}
 library(papaja)
 library(tidyverse)
+library(janitor)
 library(here)
 library(rio)
+library(knitr)
+library(kableExtra)
 ```
 
 ```{r analysis-preferences}
@@ -67,10 +72,12 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed, echo = FALSE, warning = FA
 ```{r load data, include = FALSE}
 list.files(here("data"))
 stardf <- import(here("data", "star.csv"))
+stardf <- stardf %>%
+  janitor::clean_names()
 ```
 
 # Methods
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. This paper shows how @quadros2012 used similar procedures [also see @hoagland192].
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. This paper shows how @quadros2012 used similar procedures [@hoagland1927].
 
 ## Participants
 
@@ -83,6 +90,21 @@ We analyzed the data.
 
 
 # Results
+
+The results show differences by gender and free and reduced-price lunch status in math and reading scores (see table).
+
+```{r create_stat}
+
+stardf <- stardf %>%
+  group_by(sex, frl) %>%
+  summarize(math_mean = round(mean(tmathss), digits = 2), math_sd = round(sd(tmathss), digits = 2), rdg_mean = round(mean(treadss), digits = 2),  rdg_sd = round(sd(treadss), digits = 2))
+
+View(stardf)
+
+stardf %>%
+  kable(format = "latex") %>%
+  kable_styling()
+```
 
 # Discussion
 
