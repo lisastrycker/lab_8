@@ -1,6 +1,6 @@
 ---
-title             : "Lab 8"
-shorttitle        : "Papaja file for lab 8"
+title             : "Lab 8 APA Manuscript Using Papaja in R"
+shorttitle        : "Lab 8 Assignment"
 
 author: 
   - name          : "Lisa Strycker"
@@ -29,10 +29,6 @@ abstract: |
   Here we show that responses to external stimuli differ within and between three species of isopods. Three distinct patterns were found.
   
   Relatively stronger responses to different stimuli (e.g., drop, touch) may be because some species tend to have visual predators that are larger or smaller than they are. 
-  
-  More studies are needed to investigative whether anti-predator strategies like tonic immobility improve survivorship.
-  
-  Future research should elucidate which responses work for different predators.
   
   <!-- https://tinyurl.com/ybremelq -->
   
@@ -69,46 +65,34 @@ set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed, echo = FALSE, warning = FALSE, message = FALSE, eval = TRUE, error = FALSE, fig.width = 6.5, fig.height = 8.0)
 ```
 
-```{r load data, include = FALSE}
-list.files(here("data"))
+```{r load data, echo = FALSE}
 stardf <- import(here("data", "star.csv"))
 stardf <- stardf %>%
   janitor::clean_names()
 ```
+Sow bugs and students are a lot alike. They are a bit silly and they eat glucose. This paper explores the research about isopod tonic immobility, and provides a table and a plot about student math and reading scores.
 
-# Methods
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. This paper shows how @quadros2012 used similar procedures [@hoagland1927].
+## Methods
+Methods were similar to @quadros2012 and others [see @hoagland1927].
 
 ## Participants
+Participants were sow bugs and students in public school.
 
 ## Material
+Materials included forceps and teachers.
 
 ## Procedure
+All procedures were approved by the Institutional Review Board. Sow bugs were debriefed after each trial. Children were informed that they could withdraw from the study at any time.
 
 ## Data analysis
-We analyzed the data.
-
+Data were analyzed.
 
 # Results
 
-The results show differences by gender and free and reduced-price lunch status in math and reading scores (see table).
-
-```{r create_stat}
-
-stardf <- stardf %>%
-  group_by(sex, frl) %>%
-  summarize(math_mean = round(mean(tmathss), digits = 2), math_sd = round(sd(tmathss), digits = 2), rdg_mean = round(mean(treadss), digits = 2),  rdg_sd = round(sd(treadss), digits = 2))
-
-View(stardf)
-
-stardf %>%
-  kable(format = "latex") %>%
-  kable_styling()
-```
+Results showed differences by gender and socioeconomic status in math and reading scores (see table). Results also indicated a positive relationship between years of teacher experience and total math scale score. The pattern was the same regardless of socioeconomic status, but students who paid for meals had higher math scale scores overall (see plot).
 
 # Discussion
-
-
+More studies are needed to investigative whether anti-predator strategies like tonic immobility improve survivorship. Future research should elucidate which responses work for different predators.
 \newpage
 
 # References
@@ -122,3 +106,29 @@ r_refs(file = "r-references.bib")
 
 <div id = "refs"></div>
 \endgroup
+
+\newpage 
+
+```{r create_table, echo = FALSE}
+stardf <- import(here("data", "star.csv"))
+stardf <- stardf %>%
+  janitor::clean_names()
+stardf <- stardf %>%
+  group_by(sex, frl) %>%
+  summarize(math_mean = round(mean(tmathss), digits = 2), math_sd = round(sd(tmathss), digits = 2), rdg_mean = round(mean(treadss), digits = 2),  rdg_sd = round(sd(treadss), digits = 2))
+
+stardf %>%
+  kable(format = "latex") %>%
+  kable_styling()
+```
+
+\newpage 
+
+```{r create_graph, echo = FALSE}
+stardf <- import(here("data", "star.csv"))
+
+stardf <- stardf %>%
+  janitor::clean_names()
+
+ggplot(stardf, aes(x = totexp, y = tmathss)) + theme_minimal() + geom_point(color = "gray") + geom_smooth(aes(color = factor(frl, labels=c("Paid Meals", "Free/Reduced Price Meals"))), method = "lm", se = TRUE, size = 1) + labs(x = "Teacher Experience (years)", y = "Total Math Scale Score", color="Lunch status", title = "Relation between teacher experience and math scores", subtitle = "Separate regression  lines displayed by free/reduced price lunch status") + theme(legend.position="bottom")
+```
