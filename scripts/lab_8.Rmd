@@ -18,7 +18,7 @@ affiliation:
     institution   : "University of Oregon"
 
 abstract: |
-  ANimal species have different behaviors for avoiding predators. Tonic immobility of a form of passive anti-predator behavior.
+  Animal species have different behaviors for avoiding predators. Tonic immobility of a form of passive anti-predator behavior.
   
   In tonic immobility, organisms do not respond to external stimulation.
   
@@ -35,9 +35,8 @@ abstract: |
   <!-- https://tinyurl.com/ybremelq -->
   
 keywords          : "tonic immobility"
-wordcount         : no
 
-bibliography      : ["r-references.bib"]
+bibliography      : lab8_bibliography.bib
 
 floatsintext      : no
 figurelist        : no
@@ -65,13 +64,13 @@ set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed, echo = FALSE, warning = FALSE, message = FALSE, eval = TRUE, error = FALSE, fig.width = 6.5, fig.height = 8.0)
 ```
 
-```{r load data}
+```{r load data, include = FALSE}
 list.files(here("data"))
 stardf <- import(here("data", "star.csv"))
 ```
 
 # Methods
-We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. <!-- 21-word solution (Simmons, Nelson & Simonsohn, 2012; retrieved from http://ssrn.com/abstract=2160588) -->
+We report how we determined our sample size, all data exclusions (if any), all manipulations, and all measures in the study. This paper shows how @quadros2012 used similar procedures [also see @hoagland192].
 
 ## Participants
 
@@ -80,7 +79,7 @@ We report how we determined our sample size, all data exclusions (if any), all m
 ## Procedure
 
 ## Data analysis
-We used `r cite_r("r-references.bib")` for all our analyses.
+We analyzed the data.
 
 
 # Results
